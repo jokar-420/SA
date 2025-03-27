@@ -1,0 +1,68 @@
+//BLINK_LED
+
+
+import Rpi.GPIO as GPIO
+import time
+GPIO.setWarning(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.Board)
+
+cnt=0
+Blink_Time=1
+RED_LED=14
+
+GPIO.setup(RED_LED,GPIO.OUT)
+
+while True:
+    if cnt==0:
+        GPIO.output(RED_LED,False)
+        cnt=1
+    else:
+        GPIO.output(RED_LED,True)
+        cnt=0
+    time.sleep(Blink_Time)
+    GPIO.cleanup()
+
+
+
+ // Buzzer
+
+
+import Rpi.GPIO as GPIO
+from time import sleep
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+
+Buzzer =18
+GPIO.setup(Buzzer,GPIO.OUT,initial=GPIO.LOW)
+
+while True:
+    GPIO.output(Buzzer,True)
+    sleep(1)
+    GPIO.output(Buzzer,False)
+    sleep(1)
+
+
+
+ // Togle Two LED
+
+
+
+import Rpi.GPIO as GPIO
+from time import sleep
+GPIO.setwarning(False)
+GPIO.setmode(GPIO.BOARD)
+
+RED_LED=14
+GREEN_LED=15
+
+GPIO.setup(RED_LED,GPIO.OUT,initial=GPIO.LOW)
+GPIO.setup(GREEN_LED,GPIO.OUT,initial=GPIO.LOW)
+
+while True:
+    GPIO.output(RED_LED,True)
+    GPIO.output(GREEN_LED,False)
+    sleep(1)
+    GPIO.output(RED_LED,False)
+    GPIO.output(GREEN_LED,True)
+    sleep(1)
